@@ -8,11 +8,12 @@
 
   // استقبال بيانات المهمة (todo)
   export let todo = {}
+  export let activeEditTodo;
 
   // إطلاق حدث التعديل
   function handleEdit() {
     if (todo?.id) {
-      dispatch('editTodo', todo.id )
+      dispatch('editTodo', todo)
     }
   }
 

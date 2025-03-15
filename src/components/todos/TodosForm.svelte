@@ -6,7 +6,9 @@ const dispatch = createEventDispatcher()
 let value = ''
 
 const handleAddTodo = () => {
-  dispatch('addTodo', value)
+  if (!value.trim()) return
+  dispatch('addTodo', value.trim())
+  value = ''
 }
 </script>
 
@@ -19,6 +21,6 @@ const handleAddTodo = () => {
     <input bind:value={value} type="text" placeholder="اضف مهمة جديدة ..." />
   </div>
   <div class="todos-form_submit" on:click={handleAddTodo}>
-    <button class="btn">اضافة</button>
+    <button class="btn" disabled={!value.trim()}>اضافة</button>
   </div>
 </div>

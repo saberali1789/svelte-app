@@ -26,6 +26,8 @@
     },
   ]
 
+  let activeEditTodo = null
+
   const addTodo = (e) => {
     const title = e.detail
     const id = new Date().getTime()
@@ -39,13 +41,17 @@
     console.log(e , id);
     todos = todos.filter(t => t.id !== id)
   }
+
+  const editTodo = (e) => {
+    activeEditTodo = e.detail
+  }
 </script>
 
 <main>
   <div class="container">
     <div class="todos">
       <TodosForm on:addTodo={addTodo}/>
-      <Todos {todos} on:deleteTodo={deleteTodo} />
+      <Todos {todos} {activeEditTodo} on:deleteTodo={deleteTodo} on:editTodo{editTodo} />
     </div>
   </div>
 </main>
